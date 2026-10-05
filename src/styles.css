@@ -1,0 +1,151 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Neapolitan palette: strawberry, vanilla, chocolate. Edit colors here. */
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-vanilla: var(--vanilla);
+  --color-vanilla-deep: var(--vanilla-deep);
+  --color-strawberry: var(--strawberry);
+  --color-strawberry-soft: var(--strawberry-soft);
+  --color-rose: var(--rose);
+  --color-cocoa: var(--cocoa);
+  --color-cocoa-soft: var(--cocoa-soft);
+  --color-leaf: var(--leaf);
+
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Nunito", ui-rounded, system-ui, sans-serif;
+  --font-hand: "Caveat", cursive;
+}
+
+:root {
+  --radius: 1rem;
+  --vanilla: oklch(0.975 0.018 85);
+  --vanilla-deep: oklch(0.94 0.03 80);
+  --strawberry: oklch(0.86 0.07 10);
+  --strawberry-soft: oklch(0.93 0.035 12);
+  --rose: oklch(0.66 0.13 8);
+  --cocoa: oklch(0.38 0.05 45);
+  --cocoa-soft: oklch(0.55 0.045 50);
+  --leaf: oklch(0.7 0.07 145);
+
+  --background: var(--vanilla);
+  --foreground: var(--cocoa);
+  --card: oklch(0.985 0.012 85);
+  --card-foreground: var(--cocoa);
+  --popover: var(--card);
+  --popover-foreground: var(--cocoa);
+  --primary: var(--rose);
+  --primary-foreground: var(--vanilla);
+  --secondary: var(--strawberry-soft);
+  --secondary-foreground: var(--cocoa);
+  --muted: var(--vanilla-deep);
+  --muted-foreground: var(--cocoa-soft);
+  --accent: var(--strawberry);
+  --accent-foreground: var(--cocoa);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: var(--vanilla);
+  --border: oklch(0.88 0.035 40);
+  --input: oklch(0.88 0.035 40);
+  --ring: var(--rose);
+
+  --gradient-blush: linear-gradient(180deg, var(--vanilla) 0%, var(--strawberry-soft) 45%, oklch(0.9 0.05 12) 100%);
+  --shadow-soft: 0 20px 50px -20px color-mix(in oklab, var(--cocoa) 35%, transparent);
+  --shadow-letter: 0 30px 70px -30px color-mix(in oklab, var(--cocoa) 45%, transparent),
+    0 2px 6px color-mix(in oklab, var(--cocoa) 10%, transparent);
+  --glow-rose: 0 0 40px 10px color-mix(in oklab, var(--strawberry) 70%, transparent);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* paper grain overlay */
+.paper-grain { isolation: isolate; }
+.paper-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.32 0 0 0 0 0.25 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  border-radius: inherit;
+}
+
+.bg-blush { background: var(--gradient-blush); }
+.shadow-soft { box-shadow: var(--shadow-soft); }
+.shadow-letter { box-shadow: var(--shadow-letter); }
+.glow-rose { box-shadow: var(--glow-rose); }
+
+.letter-lines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 1.95rem,
+    color-mix(in oklab, var(--strawberry) 45%, transparent) 1.95rem,
+    color-mix(in oklab, var(--strawberry) 45%, transparent) 2rem
+  );
+}
+
+@keyframes petal-fall {
+  0% { transform: translate3d(0, -10vh, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.7; }
+  100% { transform: translate3d(var(--drift, 80px), 110vh, 0) rotate(540deg); opacity: 0; }
+}
+.petal { animation: petal-fall linear infinite; }
+
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.spin-slow { animation: spin-slow 6s linear infinite; }
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.float-soft { animation: float-soft 5s ease-in-out infinite; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.4); }
+  50% { opacity: 1; transform: scale(1); }
+}
+.twinkle { animation: twinkle 3s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .petal, .spin-slow, .float-soft, .twinkle { animation: none; }
+}
