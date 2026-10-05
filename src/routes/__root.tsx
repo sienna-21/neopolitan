@@ -78,7 +78,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "For my favorite person ♡" },
+      { title: "neopolitan heaven ♡" },
       { name: "description", content: "A little handmade love letter." },
     ],
     links: [
@@ -92,7 +92,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+     { rel: "icon", href: "/favicon.jpg", type: "image/jpeg" },
     ],
   }),
   shellComponent: RootShell,
