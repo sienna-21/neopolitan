@@ -1,4 +1,4 @@
-const songAsset = "/imyours.mp3";
+import songAsset from "@/assets/imyours.mp3";
 
 // Edit all words of the letter here.
 export const envelope = {
@@ -48,7 +48,7 @@ export const garden = {
 };
 
 export const music = {
-  src: "/imyours.mp3",
+  src: songAsset,
   title: "I'm Yours",
   artist: "Isabel LaRosa",
   idleLabel: "♪ play something for us",
