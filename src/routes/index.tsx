@@ -9,7 +9,7 @@ import { ProgressFlowers } from "@/components/love/ProgressFlowers";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "For my favorite person ♡" },
+      { title: "neo ♡" },
       { name: "description", content: "A little handmade letter, and a garden that grows one flower at a time." },
       { property: "og:title", content: "For my favorite person ♡" },
       { property: "og:description", content: "A little handmade letter, and a garden that grows one flower at a time." },

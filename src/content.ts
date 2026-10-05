@@ -2,7 +2,7 @@ import songAsset from "@/assets/imyours.mp3";
 
 // Edit all words of the letter here.
 export const envelope = {
-  front: "For my favorite person ♡",
+  front: "neo ♡",
   hint: "scroll to open",
 };
 
